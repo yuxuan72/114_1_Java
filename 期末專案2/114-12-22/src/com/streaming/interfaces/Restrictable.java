@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface Restrictable {
     AgeRating getAgeRating();
-    List<Region> getRegionRestrictions();
     boolean isAccessibleBy(User user);
 }

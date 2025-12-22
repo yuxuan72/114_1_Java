@@ -1,30 +1,23 @@
 package com.streaming.model;
 
 public enum SubscriptionPlan {
-    FreeTier(1, "SD", true),
-    BasicPlan(1, "HD", false),
-    StandardPlan(2, "FHD", false),
-    PremiumPlan(4, "4K", false);
+    FreeTier(false, 1, "Free"),
+    Basic(true, 1, "Basic"),
+    Standard(true, 2, "Standard"),
+    Premium(true, 4, "Premium");
 
+    private final boolean supportsPremium;
     private final int maxSimultaneousStreams;
-    private final String maxQuality;
-    private final boolean hasAds;
+    private final String displayName;
 
-    SubscriptionPlan(int maxSimultaneousStreams, String maxQuality, boolean hasAds) {
+    SubscriptionPlan(boolean supportsPremium, int maxSimultaneousStreams, String displayName) {
+        this.supportsPremium = supportsPremium;
         this.maxSimultaneousStreams = maxSimultaneousStreams;
-        this.maxQuality = maxQuality;
-        this.hasAds = hasAds;
+        this.displayName = displayName;
     }
 
-    public int getMaxSimultaneousStreams() {
-        return maxSimultaneousStreams;
-    }
-
-    public String getMaxQuality() {
-        return maxQuality;
-    }
-
-    public boolean hasAds() {
-        return hasAds;
-    }
+    public boolean supportsPremiumContent() { return supportsPremium; }
+    public int getMaxSimultaneousStreams() { return maxSimultaneousStreams; }
+    public String getName() { return displayName; }
 }
+

@@ -9,7 +9,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class User {
     private final String id;
-    private final String email;
     private final int age;
     private final Region region;
     private SubscriptionPlan subscriptionPlan;
@@ -17,11 +16,12 @@ public class User {
     private final AtomicInteger activeStreams = new AtomicInteger(0);
     private volatile boolean loggedIn = false;
 
-    public User(String id, String email, int age, Region region, SubscriptionPlan plan) {
-        this.id = id; this.email = email; this.age = age; this.region = region; this.subscriptionPlan = plan;
+    public User(String u1, String id, int age, Region region, SubscriptionPlan plan) {
+        this.id = id; this.age = age; this.region = region; this.subscriptionPlan = plan;
     }
 
     public String getId() { return id; }
+
 
     public void addProfile(Profile p) { profiles.add(p); }
     public List<Profile> getProfiles() { return Collections.unmodifiableList(profiles); }
